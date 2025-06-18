@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <style>
-        /* --- Variáveis de Tema e Animações --- */
         :root {
             --primary-grad-start: #8E2DE2;
             --primary-grad-end: #4A00E0;
             --primary-glow: rgba(142, 45, 226, 0.5);
             --secondary-color: #00c6ff;
-            
+
             --dark-bg: #0f0c29;
             --dark-surface: #24243e;
             --dark-glass-bg: rgba(36, 36, 62, 0.6);
@@ -30,18 +31,47 @@
             --font-secondary: 'Roboto', sans-serif;
         }
 
-        @keyframes background-pan { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        @keyframes result-pop { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        .result-pop-animation { animation: result-pop 0.3s ease-in-out; }
+        @keyframes background-pan {
+            0% {
+                background-position: 0% 50%;
+            }
 
-        /* --- Estrutura Base e Layout --- */
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes result-pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .result-pop-animation {
+            animation: result-pop 0.3s ease-in-out;
+        }
+
+
         body {
             font-family: var(--font-secondary);
             background: linear-gradient(60deg, var(--primary-grad-start), var(--primary-grad-end), #24243e, #0f0c29);
             background-size: 300% 300%;
             animation: background-pan 20s ease infinite;
             color: var(--dark-text);
-            overflow: hidden; /* Previne scroll da página inteira */
+            overflow: hidden;
+            /* Previne scroll da página inteira */
         }
 
         .app-wrapper {
@@ -49,9 +79,9 @@
             height: 100vh;
         }
 
-        /* --- Barra Lateral (Sidebar) --- */
+
         .sidebar {
-            width: 280px; /* Aumentado para caber nomes maiores */
+            width: 280px;
             background-color: var(--dark-surface);
             padding: 2rem 1rem;
             display: flex;
@@ -59,6 +89,7 @@
             border-right: 1px solid var(--dark-border);
             flex-shrink: 0;
         }
+
         .sidebar-header {
             font-family: var(--font-primary);
             font-size: 1.5rem;
@@ -66,17 +97,20 @@
             text-align: center;
             margin-bottom: 2.5rem;
         }
+
         .sidebar-header i {
             color: var(--secondary-color);
             margin-right: 10px;
         }
+
         .nav-menu {
             list-style: none;
             padding: 0;
             margin: 0;
             flex-grow: 1;
-            overflow-y: auto; /* Adicionado para caso de muitos itens */
+            overflow-y: auto;
         }
+
         .nav-item a {
             display: flex;
             align-items: center;
@@ -88,15 +122,18 @@
             transition: all 0.3s ease;
             font-weight: 500;
         }
+
         .nav-item a:hover {
             background-color: var(--dark-glass-bg);
             color: white;
         }
+
         .nav-item a.active {
             background: linear-gradient(90deg, var(--primary-grad-start), var(--primary-grad-end));
             color: white;
             box-shadow: 0 0 20px var(--primary-glow);
         }
+
         .nav-item a i {
             margin-right: 15px;
             font-size: 1.2rem;
@@ -104,21 +141,23 @@
             text-align: center;
         }
 
-        /* --- Área de Conteúdo Principal --- */
+
         .main-content {
             flex-grow: 1;
             padding: 2rem;
-            overflow-y: auto; /* Permite scroll apenas no conteúdo */
+            overflow-y: auto;
         }
+
         #calculator-container {
             transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         }
+
         #calculator-container.fading {
             opacity: 0;
             transform: scale(0.98);
         }
 
-        /* --- Estilo "Glassmorphism" para as Calculadoras --- */
+
         .calculator-wrapper {
             background: var(--dark-glass-bg);
             border-radius: 20px;
@@ -129,9 +168,9 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
-        /* --- Calculadora Científica --- */
+
         .calculator-display {
-            background-color: rgba(0,0,0,0.3);
+            background-color: rgba(0, 0, 0, 0.3);
             color: white;
             padding: 20px;
             border-radius: 10px;
@@ -142,7 +181,13 @@
             overflow-x: auto;
             white-space: nowrap;
         }
-        .calc-keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+        .calc-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
         .key {
             padding: 20px;
             border-radius: 12px;
@@ -153,68 +198,126 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .key:hover { background-color: var(--dark-glass-bg); }
-        .key:active { transform: scale(0.92); }
-        .key.function { background-color: #4a4a6a; color: white; }
-        .key.operator { background-color: var(--secondary-color); color: #1a1a1a; }
-        .key.equal { grid-column: span 2; background: linear-gradient(45deg, var(--primary-grad-start), var(--primary-grad-end)); color: white; }
 
-        /* --- Calculadoras de Formulário (IMC, Juros, etc) --- */
-        .form-calculator h3 { font-family: var(--font-primary); color: white; }
-        .form-calculator .form-label { font-weight: 500; color: var(--dark-text); }
-        .form-calculator .form-control, .form-calculator .form-select {
-            background-color: rgba(0,0,0,0.2);
+        .key:hover {
+            background-color: var(--dark-glass-bg);
+        }
+
+        .key:active {
+            transform: scale(0.92);
+        }
+
+        .key.function {
+            background-color: #4a4a6a;
+            color: white;
+        }
+
+        .key.operator {
+            background-color: var(--secondary-color);
+            color: #1a1a1a;
+        }
+
+        .key.equal {
+            grid-column: span 2;
+            background: linear-gradient(45deg, var(--primary-grad-start), var(--primary-grad-end));
+            color: white;
+        }
+
+
+        .form-calculator h3 {
+            font-family: var(--font-primary);
+            color: white;
+        }
+
+        .form-calculator .form-label {
+            font-weight: 500;
+            color: var(--dark-text);
+        }
+
+        .form-calculator .form-control,
+        .form-calculator .form-select {
+            background-color: rgba(0, 0, 0, 0.2);
             color: white;
             border: 1px solid var(--dark-border);
             padding: 0.75rem 1rem;
         }
-        .form-calculator .form-control:focus, .form-calculator .form-select:focus {
-            background-color: rgba(0,0,0,0.3);
+
+        .form-calculator .form-control:focus,
+        .form-calculator .form-select:focus {
+            background-color: rgba(0, 0, 0, 0.3);
             color: white;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 0.25rem rgba(0, 198, 255, 0.25);
         }
-        .form-calculator .form-control::placeholder { color: rgba(255,255,255,0.4); }
+
+        .form-calculator .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
         .form-calculator .result-area {
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgba(0, 0, 0, 0.2);
             padding: 1.5rem;
             border-radius: 8px;
             margin-top: 1.5rem;
             text-align: center;
         }
-        .form-calculator .result-area h4 { color: var(--secondary-color); font-family: var(--font-primary); }
-        .form-calculator .result-value { font-size: 2.2rem; font-weight: bold; color: white; }
-        .form-calculator .result-classification { font-size: 1.1rem; opacity: 0.8; }
-        .form-calculator .input-group-text { background-color: var(--dark-surface); border: 1px solid var(--dark-border); color: var(--secondary-color); }
-        .form-calculator .last-update { font-size: 0.8rem; opacity: 0.7; text-align: center; margin-top: 1rem; }
+
+        .form-calculator .result-area h4 {
+            color: var(--secondary-color);
+            font-family: var(--font-primary);
+        }
+
+        .form-calculator .result-value {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .form-calculator .result-classification {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .form-calculator .input-group-text {
+            background-color: var(--dark-surface);
+            border: 1px solid var(--dark-border);
+            color: var(--secondary-color);
+        }
+
+        .form-calculator .last-update {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 1rem;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="app-wrapper">
-        <!-- Barra Lateral de Navegação -->
+
         <nav class="sidebar">
             <div class="sidebar-header">
                 <i class="bi bi-rocket-takeoff-fill"></i>
                 <span>Super Calculadora 3000</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
-                <!-- Links de navegação serão inseridos aqui pelo JS -->
+
             </ul>
         </nav>
 
-        <!-- Conteúdo Principal -->
         <main class="main-content">
             <div id="calculator-container">
-                <!-- A calculadora ativa será injetada aqui -->
+
             </div>
         </main>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
 
-            // --- ESTADO DA APLICAÇÃO E CONFIGURAÇÕES ---
+
             const state = {
                 currentTool: 'scientific',
                 exchangeRates: null, // Armazenará as cotações
@@ -231,11 +334,11 @@
                 temperatura: { name: 'Temperatura', icon: 'bi-thermometer-half' },
             };
 
-            // --- ELEMENTOS DO DOM ---
+
             const navMenu = document.getElementById('nav-menu');
             const calculatorContainer = document.getElementById('calculator-container');
 
-            // --- TEMPLATES DAS CALCULADORAS ---
+
             const calculatorTemplates = {
                 scientific: `
                     <div class="row justify-content-center"><div class="col-lg-8 col-xl-6"><div class="calculator-wrapper">
@@ -333,7 +436,7 @@
                     </div></div></div>`,
             };
 
-            // --- FUNÇÕES DE RENDERIZAÇÃO E LÓGICA ---
+
 
             function render() {
                 document.querySelectorAll('.nav-item a').forEach(a => a.classList.toggle('active', a.dataset.tool === state.currentTool));
@@ -358,12 +461,12 @@
                 }
             }
 
-            // --- LÓGICA DAS CALCULADORAS ESPECÍFICAS ---
-            
-            function setupScientificCalculator() { /* ...código da versão anterior... */ }
-            function setupImcCalculator() { /* ...código da versão anterior... */ }
-            function setupTempCalculator() { /* ...código da versão anterior... */ }
-            function setupJurosCalculator() { /* ...código da versão anterior... */ }
+
+
+            function setupScientificCalculator() { }
+            function setupImcCalculator() { }
+            function setupTempCalculator() { }
+            function setupJurosCalculator() { }
 
             function setupOhmCalculator() {
                 const form = document.getElementById('ohmForm');
@@ -405,7 +508,7 @@
                 const valueInput = document.getElementById('dataValue');
                 const unitSelect = document.getElementById('dataUnit');
                 const resultArea = document.getElementById('dataResultArea');
-                const units = { B: 1, KB: 1024, MB: 1024**2, GB: 1024**3, TB: 1024**4 };
+                const units = { B: 1, KB: 1024, MB: 1024 ** 2, GB: 1024 ** 3, TB: 1024 ** 4 };
 
                 const convertData = () => {
                     const value = parseFloat(valueInput.value) || 0;
@@ -493,7 +596,6 @@
                 });
             }
 
-            // --- INICIALIZAÇÃO DA APLICAÇÃO ---
             function init() {
                 navMenu.innerHTML = Object.keys(tools).map(key => `
                     <li class="nav-item">
@@ -516,13 +618,13 @@
             }
 
             // Copiando as funções que não mudaram para evitar repetição
-            setupScientificCalculator = function() { /* ...código da versão anterior... */ };
-            setupImcCalculator = function() { /* ...código da versão anterior... */ };
-            setupTempCalculator = function() { /* ...código da versão anterior... */ };
-            setupJurosCalculator = function() { /* ...código da versão anterior... */ };
-            
-            // Re-implementando as funções copiadas para completude do script
-            setupScientificCalculator = function() {
+            setupScientificCalculator = function () { };
+            setupImcCalculator = function () { };
+            setupTempCalculator = function () { };
+            setupJurosCalculator = function () { };
+
+
+            setupScientificCalculator = function () {
                 const display = document.getElementById('calcDisplay');
                 const keys = document.querySelector('.calc-keys');
                 let shouldResetDisplay = false;
@@ -540,7 +642,7 @@
                     }
                 });
             };
-            setupImcCalculator = function() {
+            setupImcCalculator = function () {
                 const form = document.getElementById('imcForm'); const resultArea = document.getElementById('imcResultArea'); const resultEl = document.getElementById('imcResultado'); const classificationEl = document.getElementById('imcClassificacao');
                 const calculateImc = () => {
                     const altura = parseFloat(document.getElementById('altura').value) / 100; const peso = parseFloat(document.getElementById('peso').value); if (!altura || !peso || altura <= 0 || peso <= 0) { resultArea.style.display = 'none'; return; }
@@ -550,15 +652,15 @@
                 };
                 form.addEventListener('input', calculateImc);
             };
-            setupTempCalculator = function() {
+            setupTempCalculator = function () {
                 const form = document.getElementById('tempForm'); const inputs = { celsius: document.getElementById('celsius'), fahrenheit: document.getElementById('fahrenheit'), kelvin: document.getElementById('kelvin') };
                 form.addEventListener('input', e => {
                     const sourceId = e.target.id; const value = parseFloat(e.target.value); if (e.target.value === '') { inputs.celsius.value = ''; inputs.fahrenheit.value = ''; inputs.kelvin.value = ''; return; } if (isNaN(value)) return;
-                    let c, f, k; if (sourceId === 'celsius') { c = value; f = c * 9/5 + 32; k = c + 273.15; } else if (sourceId === 'fahrenheit') { f = value; c = (f - 32) * 5/9; k = c + 273.15; } else if (sourceId === 'kelvin') { k = value; c = k - 273.15; f = c * 9/5 + 32; }
+                    let c, f, k; if (sourceId === 'celsius') { c = value; f = c * 9 / 5 + 32; k = c + 273.15; } else if (sourceId === 'fahrenheit') { f = value; c = (f - 32) * 5 / 9; k = c + 273.15; } else if (sourceId === 'kelvin') { k = value; c = k - 273.15; f = c * 9 / 5 + 32; }
                     if (sourceId !== 'celsius') inputs.celsius.value = c.toFixed(2); if (sourceId !== 'fahrenheit') inputs.fahrenheit.value = f.toFixed(2); if (sourceId !== 'kelvin') inputs.kelvin.value = k.toFixed(2);
                 });
             };
-            setupJurosCalculator = function() {
+            setupJurosCalculator = function () {
                 const form = document.getElementById('jurosForm'); const resultArea = document.getElementById('jurosResultArea'); const resultEl = document.getElementById('jurosResultado');
                 const calculateJuros = () => {
                     const C = parseFloat(document.getElementById('valorInicial').value) || 0; const A = parseFloat(document.getElementById('aporteMensal').value) || 0; const i = (parseFloat(document.getElementById('taxaJuros').value) || 0) / 100 / 12; const t = (parseInt(document.getElementById('periodo').value) || 0) * 12;
@@ -572,4 +674,5 @@
         });
     </script>
 </body>
+
 </html>
